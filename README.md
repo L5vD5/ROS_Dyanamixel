@@ -3,6 +3,10 @@
 
 Available in Melodic
 
+ROS dependency package
+DynamixelSDK
+dynamixel-workbench
+dynamixel-workbench-msgs
 
 ```
   cd catkin_make
