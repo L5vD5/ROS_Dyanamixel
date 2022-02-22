@@ -36,14 +36,14 @@ class Command():
         # rospy.loginfo(str)
 
     def __call__(self, id=1, value=0):
-        self.request = GroupBulkWrite(self.portHandler, self.packetHandler)
+        self.request = GroupSyncWrite(self.portHandler, self.packetHandler, ADDR_GOAL_POSITION, LEN_GOAL_POSITION)
 
         # Allocate goal position value into byte array
-        param_goal_position = [DXL_LOBYTE(DXL_LOWORD(4000)), DXL_HIBYTE(DXL_LOWORD(4000)), DXL_LOBYTE(DXL_HIWORD(4000)), DXL_HIBYTE(DXL_HIWORD(4000))]
+        param_goal_position = [DXL_LOBYTE(DXL_LOWORD(0)), DXL_HIBYTE(DXL_LOWORD(0)), DXL_LOBYTE(DXL_HIWORD(0)), DXL_HIBYTE(DXL_HIWORD(0))]
 
         # Add Dynamixel#1 goal position value to the Bulkwrite parameter storage
-        dxl_addparam_result = self.request.addParam(1, ADDR_GOAL_POSITION, LEN_GOAL_POSITION, param_goal_position)
-        dxl_addparam_result = self.request.addParam(2, ADDR_GOAL_POSITION, LEN_GOAL_POSITION, param_goal_position)
+        dxl_addparam_result = self.request.addParam(1, param_goal_position)
+        dxl_addparam_result = self.request.addParam(2, param_goal_position)
         print(dxl_addparam_result)
 
         dxl_comm_result = self.request.txPacket()
