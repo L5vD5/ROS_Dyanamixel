@@ -20,6 +20,6 @@ Available in Melodic
   roslaunch dynamixel_workbench_controllers dynamixel_controllers.launch usb_port:=/dev/ttyUSB0 baud_rate:=57600  
 ```
 
-https://user-images.githubusercontent.com/13390891/154946487-e4412b4d-f124-42c7-8b69-98220a53b88d.MOV
 
+Uploading IMG_0463.MOV…
 
