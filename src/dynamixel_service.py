@@ -48,6 +48,7 @@ class Service():
     def set_goal_pos_callback(self, data):
         print("Set Goal Position of ID %s = %s" % (data.id, data.position))
         dxl_comm_result, dxl_error = self.packetHandler.write4ByteTxRx(self.portHandler, data.id, ADDR_GOAL_POSITION, data.position)
+        print(dxl_comm_result, dxl_error)
         return True
 
     def read_write_py_node(self):
@@ -58,7 +59,7 @@ class Service():
 
 
 def main():
-    service = Service(DEVICENAME='/dev/ttyUSB1')
+    service = Service(DEVICENAME='/dev/ttyUSB0')
     try:
        service.portHandler.openPort()
        print("Succeeded to open the port")

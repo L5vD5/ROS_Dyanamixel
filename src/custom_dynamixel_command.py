@@ -10,11 +10,12 @@ class Command():
         # str = "Start %s"%rospy.get_time()
         # rospy.loginfo(str)
 
-    def __call__(self, id=1, value=4000):
+    def __call__(self, id=1, value=0):
         self.request = SetPositionRequest()
         self.request.id = id
         self.request.position = value
-        self.srv(self.request)
+        ret = self.srv(self.request)
+        print(ret.flag)
 
 if __name__ == "__main__":
     command = Command()
