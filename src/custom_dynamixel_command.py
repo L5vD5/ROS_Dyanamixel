@@ -1,17 +1,19 @@
+import os
 import rospy
 from dynamixel_workbench_msgs.srv import *
+from dynamixel_sdk import *
+from my_dynamixel_workbench_tutorial.srv import *
 
 class Command():
     def __init__(self):
-        self.srv = rospy.ServiceProxy('/dynamixel_workbench/dynamixel_command', DynamixelCommand)
+        self.srv = rospy.ServiceProxy('/set_position', SetPosition)
         # str = "Start %s"%rospy.get_time()
         # rospy.loginfo(str)
 
-    def __call__(self, id=1, addr_name="Goal_Position", value=1000):
-        self.request = DynamixelCommandRequest()
-        self.request.addr_name = addr_name
+    def __call__(self, id=1, value=4000):
+        self.request = SetPositionRequest()
         self.request.id = id
-        self.request.value = value
+        self.request.position = value
         self.srv(self.request)
 
 if __name__ == "__main__":
