@@ -53,7 +53,7 @@ class Service():
 
     def read_write_py_node(self):
         rospy.init_node('read_write_py_node')
-        self.srv = rospy.Service('set_position', SetPosition, self.set_goal_pos_callback)
+        rospy.Service('set_position', SetPosition, self.set_goal_pos_callback)
         rospy.Service('get_position', GetPosition, self.get_present_pos)
         rospy.spin()
 
